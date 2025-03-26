@@ -6,7 +6,7 @@
   <link href="http://blog.arisumika.top/atom.xml" rel="self"/>
   
   <link href="http://blog.arisumika.top/"/>
-  <updated>2025-03-25T03:52:30.394Z</updated>
+  <updated>2025-03-26T15:41:38.924Z</updated>
   <id>http://blog.arisumika.top/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>线性代数：向量与矩阵变换</title>
+    <link href="http://blog.arisumika.top/posts/3.html"/>
+    <id>http://blog.arisumika.top/posts/3.html</id>
+    <published>2025-03-26T15:21:00.000Z</published>
+    <updated>2025-03-26T15:41:38.924Z</updated>
+    
+    
+    
+    
+    <category term="知识讲解/复习" scheme="http://blog.arisumika.top/categories/%E7%9F%A5%E8%AF%86%E8%AE%B2%E8%A7%A3-%E5%A4%8D%E4%B9%A0/"/>
+    
+    
+    <category term="线性代数" scheme="http://blog.arisumika.top/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="计算机图形" scheme="http://blog.arisumika.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Windows下VScode配置Eigen</title>
     <link href="http://blog.arisumika.top/posts/2.html"/>
     <id>http://blog.arisumika.top/posts/2.html</id>
     <published>2025-03-25T02:39:52.411Z</published>
-    <updated>2025-03-25T03:52:30.394Z</updated>
+    <updated>2025-03-26T14:45:21.145Z</updated>
     
     <content type="html"><![CDATA[<div class="tip info"><p>Eigen是一个高层次的C ++库，有效支持线性代数，矩阵和矢量运算，数值分析及其相关的算法。Eigen是一个开源库，从3.1.1版本开始遵从MPL2许可。</p></div><h1 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h1><p>最近在学计算机图形，所以要用到线性代数相关的算法，就自己装了个Eigen，其实用Linux装会简单一些，但是本人懒得搞虚拟机或者双系统了，索性直接在windows装，搞了有些时间，避免后来者碰壁，就自己写一篇教程吧</p><h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><div class="tip warning faa-horizontal animated faa-fast"><p class='p '>如果之前没有在Vscode配置过C/C++，请先自行配置</p></div><ol><li><p>在<a href="https://eigen.tuxfamily.org/index.php?title=Main_Page">官网</a>下载Eigen3.4.0</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/yk6baz03t0n000d7w33gzaeuz95tgnlcDIYPAdexAqevAGx1Aqav.png" style="width:800px;"/></div></div></li><li><p>解压到你自己想放的地方，我个人推荐和Mingw32放在一起（别放到子类文件夹去了）</p></li><li><p>打开VScode在c_cpp_properties.json中设置包含头文件的路径<br>在”includePath”中加入Eigen的文件路径（注意上一行加逗号）</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/yk6baz03t0m000d7w33g6bgtbnq7357vDIYPAdexAqevAGx1Aqav.png" style="width:800px;"/></div></div><p>注意斜杠，要跟图片内一致，不是反斜杠哦</p></li><li><p>在tasks.json中，修改如下：<br>同样需要注意上一行后面加逗号。</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;-I&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="string">&quot;C:\\...\\eigen-3.4.0\\Eigen&quot;</span> #就是你自己的路径</span><br></pre></td></tr></table></figure><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/yk6baz03t0n000d7w33gzaevtu5tholmDIYPAdexAqevAGx1Aqav.png" style="width:800px;"/></div></div></li><li><p>一般来说这个时候已经配置好了，可以使用一段代码来测试是否配置成功。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;Eigen/Dense&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Eigen;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    MatrixXd m = MatrixXd::<span class="built_in">Random</span>(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">    m = (m + MatrixXd::<span class="built_in">Constant</span>(<span class="number">2</span>,<span class="number">2</span>, <span class="number">1</span>)) * <span class="number">10</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;m =&quot;</span> &lt;&lt; endl</span><br><span class="line">         &lt;&lt; m &lt;&lt; endl;</span><br><span class="line">    <span class="function">VectorXd <span class="title">v</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">    v &lt;&lt; <span class="number">1</span>, <span class="number">2</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;m * v =&quot;</span> &lt;&lt; endl</span><br><span class="line">         &lt;&lt; m * v &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p class='p red'>但是有些人可能会有问题，点击右上角运行会报错找不到头文件</p><div class="tip warning"><p>这是因为右上角的运行是你安装了Code Runner插件，而你的Code Runner还没有配置Eigen</p></div></li><li>给Code Runner配置Eigen<br>打开Code Runner的设置<div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/ymjew503t0n000d7w32y540xgr5mvkinDIYPAdexAqevAGx1Aqav.png" style="width:800px;"/></div></div>找到CPP这一栏<div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/yk6baz03t0m000d7w33g6bgu8tq74gzgDIYPAdexAqevAGx1Aqav.png" style="width:800px;"/></div></div>在g++后面加上如下：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-I \<span class="string">&quot;C:\\...\\eigen-3.4.0\&quot; #你自己的路径</span></span><br></pre></td></tr></table></figure><div class="tip success"><p>然后再用右上角那个按钮运行代码就不会报错了！！！恭喜你完成了Eigen的配置!</p></div></li></ol><p class='p center logo huge'>ArisuMika</p><p class='p center small cyan'>关注Arisu喵！关注Arisu谢谢喵！</p><div class="tag link"><a class="link-card" title="ArisuMikaのB站" href="https://space.bilibili.com/355273977"><div class="left"><img src="https://vip.123pan.cn/1814146125/yk6baz03t0n000d7w33gzaeu4l5tf9wwDIYPAdexAqevAGx1Aqav.JPG"/></div><div class="right"><p class="text">ArisuMikaのB站</p><p class="url">https://space.bilibili.com/355273977</p></div></a></div>]]></content>
     
@@ -35,6 +54,16 @@
     
     
     
+    <category term="教学" scheme="http://blog.arisumika.top/categories/%E6%95%99%E5%AD%A6/"/>
+    
+    
+    <category term="线性代数" scheme="http://blog.arisumika.top/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="计算机图形" scheme="http://blog.arisumika.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2/"/>
+    
+    <category term="VScode" scheme="http://blog.arisumika.top/tags/VScode/"/>
+    
+    <category term="C++" scheme="http://blog.arisumika.top/tags/C/"/>
     
   </entry>
   
@@ -43,9 +72,9 @@
     <link href="http://blog.arisumika.top/posts/1.html"/>
     <id>http://blog.arisumika.top/posts/1.html</id>
     <published>2025-03-22T14:55:54.050Z</published>
-    <updated>2025-03-25T03:52:39.769Z</updated>
+    <updated>2025-03-26T14:57:01.626Z</updated>
     
-    <content type="html"><![CDATA[<p class='p logo h1 green'>个人Blog基本80%完成上线！</p><div class="tip info"><p>本Blog主要展示个人技术栈和日常有趣的事情以及部分教学内容</p></div><h1 id="目前功能"><a href="#目前功能" class="headerlink" title="目前功能"></a>目前功能</h1><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>文章发布</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>音乐播放器</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>自定义css</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>最新文档显示</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>多样个性化标签外挂</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>留言板</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>友链</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>smooth丝滑动画</p>            </div><h1 id="未来新增功能"><a href="#未来新增功能" class="headerlink" title="未来新增功能"></a>未来新增功能</h1><div class='checkbox red'><input type="checkbox" />            <p>模块窗口划分</p>            </div><div class='checkbox red'><input type="checkbox" />            <p>标签分类与归档</p>            </div><div class='checkbox red'><input type="checkbox" />            <p>评论系统</p>            </div><div class="timeline pink"><div class='timeline-item headline'>        <div class='timeline-item-title'>          <div class='item-circle'><p>开发历程</p></div>        </div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>2025-03-15</p></div>        </div>        <div class='timeline-item-content'><p>突然想起来自己之前搭的个人网站挂掉了，服务器也要过期了，域名也是。<br>于是计划搭建此站<br><span class="heimu" title="你知道的太多了"> 才不会告诉你是因为本人疏忽管理维护导致的（</span></p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>2025-03-24</p></div>        </div>        <div class='timeline-item-content'><p>本站正式上线v0.5版本！<br>迫于时间和使用，<span class="heimu" title="你知道的太多了"> 其实是本人太懒了（</span>本站功能并不完整，后续等待继续开发</p></div>      </div></div><p class='p center logo huge'>ArisuMika</p><p class='p center small cyan'>关注Arisu喵！关注Arisu谢谢喵！</p><div class="tag link"><a class="link-card" title="ArisuMikaのB站" href="https://space.bilibili.com/355273977"><div class="left"><img src="https://vip.123pan.cn/1814146125/yk6baz03t0n000d7w33gzaeu4l5tf9wwDIYPAdexAqevAGx1Aqav.JPG"/></div><div class="right"><p class="text">ArisuMikaのB站</p><p class="url">https://space.bilibili.com/355273977</p></div></a></div>]]></content>
+    <content type="html"><![CDATA[<p class='p logo h1 green'>个人Blog基本80%完成上线！</p><div class="tip info"><p>本Blog主要展示个人技术栈和日常有趣的事情以及部分教学内容</p></div><h1 id="目前功能"><a href="#目前功能" class="headerlink" title="目前功能"></a>目前功能</h1><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>文章发布</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>音乐播放器</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>自定义css</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>最新文档显示</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>多样个性化标签外挂</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>留言板</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>友链</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>smooth丝滑动画</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>标签分类与归档</p>            </div><div class='checkbox green checked'><input type="checkbox" checked="checked"/>            <p>模块窗口划分</p>            </div><h1 id="未来新增功能"><a href="#未来新增功能" class="headerlink" title="未来新增功能"></a>未来新增功能</h1><div class='checkbox red'><input type="checkbox" />            <p>评论系统</p>            </div><div class="timeline pink"><div class='timeline-item headline'>        <div class='timeline-item-title'>          <div class='item-circle'><p>开发历程</p></div>        </div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>2025-03-15</p></div>        </div>        <div class='timeline-item-content'><p>突然想起来自己之前搭的个人网站挂掉了，服务器也要过期了，域名也是。<br>于是计划搭建此站<br><span class="heimu" title="你知道的太多了"> 才不会告诉你是因为本人疏忽管理维护导致的（</span></p></div>      </div><div class='timeline-item'>        <div class='timeline-item-title'>          <div class='item-circle'><p>2025-03-24</p></div>        </div>        <div class='timeline-item-content'><p>本站正式上线v0.5版本！<br>迫于时间和使用，<span class="heimu" title="你知道的太多了"> 其实是本人太懒了（</span>本站功能并不完整，后续等待继续开发</p></div>      </div></div><p class='p center logo huge'>ArisuMika</p><p class='p center small cyan'>关注Arisu喵！关注Arisu谢谢喵！</p><div class="tag link"><a class="link-card" title="ArisuMikaのB站" href="https://space.bilibili.com/355273977"><div class="left"><img src="https://vip.123pan.cn/1814146125/yk6baz03t0n000d7w33gzaeu4l5tf9wwDIYPAdexAqevAGx1Aqav.JPG"/></div><div class="right"><p class="text">ArisuMikaのB站</p><p class="url">https://space.bilibili.com/355273977</p></div></a></div>]]></content>
     
     
       
@@ -57,6 +86,8 @@
       
     
     
+    
+    <category term="更新说明" scheme="http://blog.arisumika.top/categories/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/"/>
     
     
   </entry>
