@@ -6,7 +6,7 @@
   <link href="http://blog.arisumika.top/atom.xml" rel="self"/>
   
   <link href="http://blog.arisumika.top/"/>
-  <updated>2025-04-14T14:29:13.653Z</updated>
+  <updated>2025-04-20T10:01:36.871Z</updated>
   <id>http://blog.arisumika.top/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>光栅化1（三角形）</title>
+    <link href="http://blog.arisumika.top/posts/6.html"/>
+    <id>http://blog.arisumika.top/posts/6.html</id>
+    <published>2025-04-20T09:50:00.000Z</published>
+    <updated>2025-04-20T10:01:36.871Z</updated>
+    
+    
+    
+    
+    <category term="Arisuの巧克力" scheme="http://blog.arisumika.top/categories/Arisu%E3%81%AE%E5%B7%A7%E5%85%8B%E5%8A%9B/"/>
+    
+    
+    <category term="线性代数" scheme="http://blog.arisumika.top/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="计算机图形" scheme="http://blog.arisumika.top/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>变换（模型、视图、投影）</title>
