@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>光栅化1（三角形）</title>
+      <title>光栅化（三角形的离散化）</title>
       <link href="/posts/6.html"/>
       <url>/posts/6.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<div class="tip info"><p>在之前的视图变换之后就要进行光栅化</p></div><h1 id="视锥">视锥</h1><h2 id="视锥定义">视锥定义</h2><p>从摄像机出发，看到的第一个平面是近平面，那么我们要给近平面定义一个宽高度，就类似于显示器一样的宽高比。<br>也就是可以看到的角度范围：fov，一般分为fovY和fovX。<br>foxY就是垂直可视角度；fovX也就是水平可视角度。<br>一般定义宽高比和fovY，直接就可以推出fovX。<br>具体可以看下图：</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/yk6baz03t0m000d7w33g6vwjvw848jzpDIYPAdexAqevAGx1Aqav.png" style="height:400px;"/></div></div><h2 id="视锥计算">视锥计算</h2><p>确定fovY之后，就可以知道上面角度就是fovY/2，假定近平面上中点坐标是（0，t，n）.<br>就可以列出等式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>f</mi><mi>o</mi><mi>v</mi><mi>Y</mi></mrow><mn>2</mn></mfrac><mo>=</mo><mfrac><mi>t</mi><mrow><mi mathvariant="normal">∣</mi><mi>n</mi><mi mathvariant="normal">∣</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{fovY}{2} = \frac{t}{|n|}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.277216em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322159999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mord mathdefault mtight" style="margin-right:0.22222em;">Y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.3445559999999999em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.824556em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mathdefault mtight">n</span><span class="mord mtight">∣</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><br>宽高比：aspect = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>r</mi><mi>t</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{r}{t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.040392em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.695392em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/ymjew503t0l000d7w32x7lr89js1ui25DIYPAdexAqevAGx1Aqav.png" style="height:400px;"/></div></div><p>这些概念都可以相互转换</p><h1 id="光栅化-三角形的离散化">光栅化（三角形的离散化）</h1><h2 id="做完mvp-模型-视图-投影变换">做完MVP（模型、视图、投影变换）</h2><p>参考本篇文章：<a href="https://blog.arisumika.top/posts/5.html">变换（模型、视图、投影）</a><br>做完上述变换之后，所有的物体都会停留在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><msup><mo stretchy="false">]</mo><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">[-1,1]^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span> 的立方体里面。<br>那么这个一个正方体应该画在哪里呢？那肯定是在屏幕上。</p><h2 id="显示在屏幕上">显示在屏幕上</h2><h3 id="基本概念">基本概念</h3><h4 id="什么是屏幕？">什么是屏幕？</h4><ul><li>屏幕由一组像素组成</li><li>分辨率：像素组的数量密度</li><li>屏幕是典型的光栅成像设备</li></ul><h4 id="raster-光栅化">Raster&quot;光栅化&quot;</h4><ul><li>Ratherize == 画到屏幕上</li></ul><h4 id="像素">像素</h4><p>一个像素显示一种颜色；像素颜色由RGB（red,green,blue）混合组成。</p><h3 id="定义屏幕空间">定义屏幕空间</h3><p>定义一个平面直角坐标系，每个像素都可以用坐标来表示，写成（x,y）形式。<br>例如下图的蓝色像素可以用（2，1）来表示<br>从零开始，像素的坐标范围就是（0，0）到（width-1，height-1）<br>像素的的中心就是（x+0.5,y+0.5）<br>屏幕的覆盖范围则是（0，0）到（width，height）</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/yk6baz03t0m000d7w33g6vwrhn84gi6xDIYPAdexAqevAGx1Aqav.png" style="height:400px;"/></div></div><h3 id="映射到屏幕空间">映射到屏幕空间</h3><p>相机朝向在z上，我们先不管<br>那么就很简单了，在x，y上变换：<br>将xy：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><msup><mo stretchy="false">]</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">[1,1]^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose"><span class="mclose">]</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> 变换到 [0,width] * [0,height]</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/yk6baz03t0l000d7w33fd4zll4si20jxDIYPAdexAqevAGx1Aqav.png" style="height:400px;"/></div></div><p>那么就可以得到<strong>视口变换</strong>：</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/yk6baz03t0m000d7w33g6vws4i84hujbDIYPAdexAqevAGx1Aqav.png" style="height:400px;"/></div></div><h3 id="基础图形-三角形">基础图形（三角形）</h3><p>在计算机图形中，最基本的图形就是三角形，得到非常广泛的运用。</p><ul><li>三角形是最基础的多边形。</li><li>任何的多边形都可以拆解成三角形。</li><li>三个点连成三角形，那一定是一个平面。</li><li>三角形的内部是一个平面。</li><li>三角形的内外部定义非常清楚，通过向量叉积就可以了。</li><li>只要定义三个顶点，就可以推算出三角形内的任何一个点。</li></ul><h3 id="最简单的光栅化-采样">最简单的光栅化（采样）</h3><p>采样：就是把一个函数离散化的过程。<br>光栅化采样：利用像素的中心，对屏幕空间进行采样。</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/ymjew503t0m000d7w32xp533k07p5o5eDIYPAdexAqevAGx1Aqav.png" style="height:400px;"/></div></div><p>假如我们需要对上面的三角形进行采样，光栅化显示在屏幕上。<br>定义一个函数：inside（tri，x，y），判断像素点是否在三角形内，<br>在三角形内就是1，不在就是0.<br>跟据1和0的判断，就可以进行采样离散化。</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/ymjew503t0l000d7w32x7lrppgs2rnh7DIYPAdexAqevAGx1Aqav.png height=400px"/></div></div><p><strong>采样函数belike：</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x = <span class="number">0</span>; x &lt; xmax; x++)</span><br><span class="line">&#123;</span><br><span class="line">     <span class="keyword">for</span> (<span class="type">int</span> y = <span class="number">0</span>; y &lt; ymax; y++)</span><br><span class="line">     &#123;</span><br><span class="line">          image[x][y] = <span class="built_in">inside</span>(tri,x + <span class="number">0.5</span>,y + <span class="number">0.5</span>);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>那么inside的函数具体是怎么实现的呢？<br>其实之前学向量的叉积的时候就提到过了。</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/ymjew503t0m000d7w32xp534iu7p7146DIYPAdexAqevAGx1Aqav.png height=400px"/></div></div><p>具体计算过程参考这篇文章：<a href="https://blog.arisumika.top/posts/3.html">线性代数：向量与基础矩阵</a></p><h3 id="光栅采样中的争议问题">光栅采样中的争议问题</h3><p>像下面的这幅图，中间的点到底是在三角形1 还是 2 还是 都在 还是 都不在。<br><strong>这些! 全部自己决定！</strong></p><ul><li><strong>注意</strong>：在一些图形学的API上，比如OpenGl或者Direct X，有非常严格的规定，点在上左则算在内，下右不算。</li></ul><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/yk6baz03t0l000d7w33fd50q4bsiwlu4DIYPAdexAqevAGx1Aqav.png height=400px"/></div></div><h3 id="最简单的加速优化？">最简单的加速优化？</h3><p><strong>一优化：</strong><br>我们得到采样之后的数据之后，是否有必要遍历全部像素点？<br>只需要如下图的选择xmax和ymax的矩形（蓝色区域）中遍历就可以了。也就是使用包围盒，Bounding Box。</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/ymjew503t0l000d7w32x7lrrbas2ulptDIYPAdexAqevAGx1Aqav.png height=400px"/></div></div><p><strong>二优化：</strong><br>去选择每一行的xmin和xmax，然后直接在这区间内给像素着色就可以了。<br>每一行都记录这xmin和xmax，保证遍历的像素点最少。<br>但是并不好实现，一般在bounding box非常大的情况下使用。</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/ymjew503t0n000d7w32y5dw30anbmztjDIYPAdexAqevAGx1Aqav.png height=400px"/></div></div><h3 id="锯齿">锯齿</h3><p>经过以上步骤，恭喜你！完成了光栅化的基础采样，并显示在了屏幕之上，但是结果是下图的样子。<br>我们想要的明明是一个平整的三角形，这是为什么呢？<br>锯齿产生了！光栅化图形学一直在致力于解决的严重问题。<br>锯齿产生的原因，像素本身自己有一定的大小，采样率对于信号也不够高，产生了走样的结果。</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://vip.123pan.cn/1814146125/yk6baz03t0n000d7w33gzssw8anrq9p3DIYPAdexAqevAGx1Aqav.png height=400px"/></div></div><h2 id="之后">之后</h2><p>接下来要解决 <strong>抗锯齿</strong> 或者是 <strong>反走样</strong>！！！</p><p class='p center logo huge'>ArisuMika</p><p class='p center small cyan'>关注Arisu喵！关注Arisu谢谢喵！</p><div class="tag link"><a class="link-card" title="ArisuMikaのB站" href="https://space.bilibili.com/355273977"><div class="left"><img src="https://vip.123pan.cn/1814146125/yk6baz03t0n000d7w33gzaeu4l5tf9wwDIYPAdexAqevAGx1Aqav.JPG"/></div><div class="right"><p class="text">ArisuMikaのB站</p><p class="url">https://space.bilibili.com/355273977</p></div></a></div>]]></content>
       
       
       <categories>
@@ -128,13 +128,13 @@
       
         <tags>
             
-            <tag> 线性代数 </tag>
-            
-            <tag> 计算机图形 </tag>
-            
             <tag> VScode </tag>
             
             <tag> C++ </tag>
+            
+            <tag> 线性代数 </tag>
+            
+            <tag> 计算机图形 </tag>
             
         </tags>
       
@@ -173,28 +173,6 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>关于</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
@@ -206,9 +184,42 @@
     
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/css/runtime.min.css"/>
+      <url>/css/runtime.min.css</url>
+      
+        <content type="html"><![CDATA[div#runtime {    width: 180px;    margin: auto;    color: #fff;    padding-inline: 5px;    border-radius: 10px;    background-color: rgba(0, 0, 0, .7)}#workboard {    font-size: 12px}[data-theme=dark] div#runtime {    color: #28b4c8;    box-shadow: 0 0 5px rgba(28, 69, 218, .71);    animation: flashlight 1s linear infinite alternate}#ghbdages .github-badge img {    height: 20px}@-moz-keyframes flashlight {    from {        box-shadow: 0 0 5px #f791a9    }    to {        box-shadow: 0 0 2px #f791a9    }}@-webkit-keyframes flashlight {    from {        box-shadow: 0 0 5px #f791a9    }    to {        box-shadow: 0 0 2px #f791a9    }}@-o-keyframes flashlight {    from {        box-shadow: 0 0 5px #f791a9    }    to {        box-shadow: 0 0 2px #f791a9    }}@keyframes flashlight {    from {        box-shadow: 0 0 5px #f791a9    }    to {        box-shadow: 0 0 2px #f791a9    }}]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/js/runtime.min.js"/>
+      <url>/js/runtime.min.js</url>
+      
+        <content type="html"><![CDATA[var now=new Date;function createtime(){var t=new Date("03/23/2025 00:00:00");now.setTime(now.getTime()+250);var e=(now-t)/1e3/60/60/24,a=Math.floor(e),n=(now-t)/1e3/60/60-24*a,r=Math.floor(n);1==String(r).length&&(r="0"+r);var s=(now-t)/1e3/60-1440*a-60*r,i=Math.floor(s);1==String(i).length&&(i="0"+i);var o=(now-t)/1e3-86400*a-3600*r-60*i,l=Math.round(o);1==String(l).length&&(l="0"+l);let g="";g=`<span class='textTip'>本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`,document.getElementById("workboard")&&(document.getElementById("workboard").innerHTML=g)}setInterval((()=>{createtime()}),250);]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -228,22 +239,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/js/runtime.min.js"/>
-      <url>/js/runtime.min.js</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[var now=new Date;function createtime(){var t=new Date("03/23/2025 00:00:00");now.setTime(now.getTime()+250);var e=(now-t)/1e3/60/60/24,a=Math.floor(e),n=(now-t)/1e3/60/60-24*a,r=Math.floor(n);1==String(r).length&&(r="0"+r);var s=(now-t)/1e3/60-1440*a-60*r,i=Math.floor(s);1==String(i).length&&(i="0"+i);var o=(now-t)/1e3-86400*a-3600*r-60*i,l=Math.round(o);1==String(l).length&&(l="0"+l);let g="";g=`<span class='textTip'>本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`,document.getElementById("workboard")&&(document.getElementById("workboard").innerHTML=g)}setInterval((()=>{createtime()}),250);]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/css/runtime.min.css"/>
-      <url>/css/runtime.min.css</url>
-      
-        <content type="html"><![CDATA[div#runtime {    width: 180px;    margin: auto;    color: #fff;    padding-inline: 5px;    border-radius: 10px;    background-color: rgba(0, 0, 0, .7)}#workboard {    font-size: 12px}[data-theme=dark] div#runtime {    color: #28b4c8;    box-shadow: 0 0 5px rgba(28, 69, 218, .71);    animation: flashlight 1s linear infinite alternate}#ghbdages .github-badge img {    height: 20px}@-moz-keyframes flashlight {    from {        box-shadow: 0 0 5px #f791a9    }    to {        box-shadow: 0 0 2px #f791a9    }}@-webkit-keyframes flashlight {    from {        box-shadow: 0 0 5px #f791a9    }    to {        box-shadow: 0 0 2px #f791a9    }}@-o-keyframes flashlight {    from {        box-shadow: 0 0 5px #f791a9    }    to {        box-shadow: 0 0 2px #f791a9    }}@keyframes flashlight {    from {        box-shadow: 0 0 5px #f791a9    }    to {        box-shadow: 0 0 2px #f791a9    }}]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
