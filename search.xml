@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>就业方向的修正与再思考以及个人近况</title>
+      <link href="/posts/7.html"/>
+      <url>/posts/7.html</url>
+      
+        <content type="html"><![CDATA[<div class="tip info"><p>本篇更多是个人的碎碎念，对于本人的未来思考</p></div><h1 id="原本的方向想法">原本的方向想法</h1><h2 id="与计算机图形学的缘">与计算机图形学的缘</h2><p>一开始先接触到的是渲染这一块，本人平常也有玩Blender的经验，再加上许多游戏的经验。<br>我发现我会特别在意游戏里面的渲染，光影，纹理这一块内容，在此产生了些许兴趣。<br>再之后就知道了技术美术和图形工程师这两个职位。<br>在此之前本人大一上学的都是全栈方向，以前端为主。<br>大一下中期发现了计算机图形学之后决定光速转行，然后就有了你们所看到的我在学习计算机图形学的过程笔记。</p><h2 id="与技术美术的思">与技术美术的思</h2><p>经过技术美术和图形工程师这两个岗位的查询，对比和询问之后，发现其实技术美术更佳符合我的兴趣方向。<br>同时也注意到了许多问题：</p><ul><li>岗位少，基本都是中大厂在招</li><li>学的方向多，技术和美术双向发展(但其实还好，本人本身就是艺术转文化，说到底还有一些底子)</li><li>工作也不好拿，竞争大</li><li>技美也分很多方向</li><li>。。。<br>同时我还是双非，也不能说有多大优势，但是能进我还是想试试的。</li></ul><h1 id="修正与再思考">修正与再思考</h1><h2 id="与技术美术的思考">与技术美术的思考</h2><p>最近也是加上了不少业内人和路上的学长，都在劝我远离计算机图形学，就算要走也不要走渲染向技术美术。<br>这不禁让我重新思考起了方向，但是确实，我对于渲染的兴趣明显更大于其他方向，这不得不使我做出新的抉择。<br>继续走渲染向？还是另辟蹊径，改走其他方向？<br>说到底，我到现在还没有做出一个明确的决定。<br>只有一个是确认的，我要走的是游戏行业，最好带些美术成分的。<br>技术美术的方向有很多，渲染，粒子，工具，动画等等。<br>但是偏偏渲染向说人很多，这让我很郁闷。<br>我究竟要靠长时间的学习和实力脱颖而出？<br>还是在另一个相对不那么拥挤的赛道走出自己的路，因为非渲染向的学习资料是相对更少的，更多的还是需要自己去研究学习。</p><h2 id="眼光重回游戏客户端开发">眼光重回游戏客户端开发</h2><p>也有不少人说客户端开发是一个更好的选择，起码比技美更好一些。<br>更多的是考察基础，cpp和引擎的掌握程度，当然，大厂更看重基础的扎实程度以及个人可塑性。<br>这也是一条道路，客户端转技美也算是可以？</p><h2 id="修正">修正</h2><p>起码现在，我打算先把计算机基础学好，打一个扎实的cpp基础，抓算法，抓项目，抓能力塑造<br>以及时刻观察市面游戏行业的发展，对于岗位的需求，要求。<br>对着岗位要求进行学习是一个更简单明确的方法和方向。<br>很难说我现在对于渲染技术美术包有多大的信心，但是不管怎么说，试试看？<br>凭借基础留一条客户端的路也不是不行。</p><h1 id="个人近况">个人近况</h1><h2 id="为什么不更新了？学这么慢吗？">为什么不更新了？学这么慢吗？</h2><p>因为最近的事情有点多，主要是我一直在规划我一整个的计划，<br>我现在不确定把这部分学完要什么时候了，但是可以说的是，7月前大概会结束。</p><p>还有是临近期末周，本人平常是不上课不听课的，一般都是学自己的，所以所有科目都没有学，<br>为了避免挂科，需要抽出很多期末冲刺时间。</p><p>然后也正研究其他的东西，特别是Gal网站（可以去友链看看）做完之后，需要考虑很多的运营维护问题，为了维持网站的运行。我花了很多时间，想了很多的方案，目前是最优解，但是具体实施还是需要时间。</p><h2 id="心态">心态</h2><p>这暑假是本人的大一向大二的转变，说实话，给我的时间并不是很充足，我必须尽快决定我的方向，然后迅速进行学习线的规划与完成。<br>这么说可能会有人觉得我太急了，但是我确实很急，并不是说单纯想卷，只是我真的很想得到这份工作。</p><p><strong>这次的碎碎念就到这里吧，时间可贵，把快乐放在自己身上</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Arisuの棉花糖 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 个人日常 </tag>
+            
+            <tag> 就业方向 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>光栅化（三角形的离散化）</title>
       <link href="/posts/6.html"/>
       <url>/posts/6.html</url>
@@ -195,11 +222,11 @@
     
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title></title>
+      <link href="/js/runtime.min.js"/>
+      <url>/js/runtime.min.js</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[var now=new Date;function createtime(){var t=new Date("03/23/2025 00:00:00");now.setTime(now.getTime()+250);var e=(now-t)/1e3/60/60/24,a=Math.floor(e),n=(now-t)/1e3/60/60-24*a,r=Math.floor(n);1==String(r).length&&(r="0"+r);var s=(now-t)/1e3/60-1440*a-60*r,i=Math.floor(s);1==String(i).length&&(i="0"+i);var o=(now-t)/1e3-86400*a-3600*r-60*i,l=Math.round(o);1==String(l).length&&(l="0"+l);let g="";g=`<span class='textTip'>本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`,document.getElementById("workboard")&&(document.getElementById("workboard").innerHTML=g)}setInterval((()=>{createtime()}),250);]]></content>
       
     </entry>
     
@@ -239,11 +266,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/js/runtime.min.js"/>
-      <url>/js/runtime.min.js</url>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[var now=new Date;function createtime(){var t=new Date("03/23/2025 00:00:00");now.setTime(now.getTime()+250);var e=(now-t)/1e3/60/60/24,a=Math.floor(e),n=(now-t)/1e3/60/60-24*a,r=Math.floor(n);1==String(r).length&&(r="0"+r);var s=(now-t)/1e3/60-1440*a-60*r,i=Math.floor(s);1==String(i).length&&(i="0"+i);var o=(now-t)/1e3-86400*a-3600*r-60*i,l=Math.round(o);1==String(l).length&&(l="0"+l);let g="";g=`<span class='textTip'>本站居然运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span> <i class='fas fa-heartbeat' style='color:red'></i>`,document.getElementById("workboard")&&(document.getElementById("workboard").innerHTML=g)}setInterval((()=>{createtime()}),250);]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
